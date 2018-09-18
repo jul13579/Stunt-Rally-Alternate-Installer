@@ -39,7 +39,7 @@ WizardSmallImageFile=Small-Image.bmp
 WizardImageStretch=True
 
 OutputDir=bin
-OutputBaseFilename=LEGO-Stunt-Rally-Alternate-Installer-{#MyAppInstallerVersion}-german
+OutputBaseFilename=LEGO-Stunt-Rally-Alternate-Installer-{#MyAppInstallerVersion}-german-noCD
 
 UninstallFilesDir={app}
 UninstallDisplayName={#MyAppName}
@@ -72,8 +72,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "adminrun"; Description: "Run {#MyAppName} with Administrator Rights"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "{code:GetSourceDrive}\resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
-Source: "{code:GetSourceDrive}\data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
+Source: "resource.cfg"; DestDir: "{app}"; Flags: ignoreversion
+Source: "data1.cab"; DestDir: "{app}"; Flags: ignoreversion deleteafterinstall
 
 Source: "Tools\CABExtract\i5comp.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "Tools\CABExtract\ZD51145.DLL"; DestDir: "{app}"; Flags: deleteafterinstall
@@ -151,21 +151,3 @@ Type: filesandordirs; Name: "{app}\GameTracks"
 Type: filesandordirs; Name: "{app}\res"
 Type: filesandordirs; Name: "{app}\SavedTracks\Images"
 Type: dirifempty; Name: "{app}\SavedTracks"
-
-[Code]
-// Pascal script from Bgbennyboy to detect a CD, cleaned up
-// and modified to support both ANSI and Unicode Inno Setup
-var
-    SourceDrive: string;
-
-#include "FindDisc.pas"
-
-function GetSourceDrive(Param: String): String;
-begin
-    Result:=SourceDrive;
-end;
-
-procedure InitializeWizard();
-begin
-    SourceDrive:=GetSourceCdDrive();
-end;

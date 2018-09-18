@@ -1,4 +1,4 @@
-﻿//  LEGO(R) Stunt Rally Alternate Installer
+//  LEGO(R) Stunt Rally Alternate Installer
 //  Created 2013-2014 Triangle717
 //  <http://Triangle717.WordPress.com/>
 //  Contains source code from Grim Fandango Setup
